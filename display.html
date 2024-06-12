@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Display Page</title>
+    <link rel="stylesheet" href="style/Display_page.css">
+</head>
+
+<body>
+    <div class="container_center">
+        <div class="container_mobile">
+            <div class="container_content">
+                <div class="display_logo">
+                    <img src="Images/Mulah_logo.png" alt="Logo">
+                </div>
+                <div class="display_welcome">
+                    <p class="display_title">Your Information</p>
+                </div>
+                <div class="display_info">
+                    <p>Phone Number: <span id="display_phone"></span></p>
+                    <p>Name: <span id="display_name"></span></p>
+                    <p>Birthday: <span id="display_birthday"></span></p>
+                    <p>Email: <span id="display_email"></span></p>
+                </div>
+                <div class="display_button">
+                    <a href="Welcome_page.html"><button>Back to Home</button></a>
+                </div>
+                <footer class="display_footer">
+                    <hr>
+                    <p>Powered by <a href="#">MulahReward.com</a></p>
+                </footer>
+            </div>
+        </div>   
+    </div>
+
+    <script>
+        window.onload = function() {
+            const queryString = window.location.search;
+            const urlParams = new URLSearchParams(queryString);
+            document.getElementById("display_phone").innerText = urlParams.get('phone');
+            document.getElementById("display_name").innerText = urlParams.get('name');
+            document.getElementById("display_birthday").innerText = urlParams.get('birthday');
+            document.getElementById("display_email").innerText = urlParams.get('email');
+        };
+    </script>
+</body>
+</html>

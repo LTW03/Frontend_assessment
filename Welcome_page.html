@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome Page</title>
+    <link rel="stylesheet" href="style/Welcome_page_style.css">
+</head>
+
+<body>
+    <div class="centerlize_container">
+        <div class="mobilesize_contain">
+            <div class="content_container">
+                <div class="logo">
+                    <img src="Images/Mulah_logo.png" alt="">
+                </div>
+                <div class="welcome">
+                    <p class="welcome_message">Hello,</p>
+                    <p class="welcome_message">Welcome!</p>
+                    <p class="welcome_check_message">Check Your Loyalty Point & Rewards</p>
+                </div>
+                <div class="input_submit_container">
+                    <div class="mobileNum_input_container">
+                        <div class="countryCode_dropbox_con">
+                            <select class="country_code_option">
+                                <option value="+60">+60</option>
+                            </select>
+                        </div>
+                        <input class="phonenum_input" style="color: #a8a8a8;" placeholder="Enter mobile number" type="tel" maxlength="15">
+                    </div>
+                    <div class="sub_button">
+                        <button onclick="submitPhoneNumber()">Check Loyalty Points</button>
+                    </div>
+                </div>
+                <footer class="foot">
+                    <hr>
+                    <p>Powered by <a href="#">MulahReward.com</a></p>
+                </footer>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function submitPhoneNumber() {
+            let phoneNumber = document.querySelector('.phonenum_input').value;
+            window.location.href = `Register_page.html?phone=${phoneNumber}`;
+        }
+        function formatPhoneNumber() {
+            let input = document.querySelector('.phonenum_input');
+            let countryCode = document.querySelector('.country_code_option').value;
+            let inputValue = input.value;
+
+            // remove characters except digits
+            let cleaned = inputValue.replace(/\D/g, '');
+
+            // match the cleaned value to the desired format
+            let formatted = cleaned.replace(/(\d{2})(\d{3})(\d{6})/, `${countryCode} $1 $2 $3`);
+            //update
+            input.value = formatted;
+        }
+        document.querySelector('.phonenum_input').addEventListener('input', formatPhoneNumber);
+    </script>
+</body>
+</html>

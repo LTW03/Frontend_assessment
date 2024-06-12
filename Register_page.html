@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register Page</title>
+    <link rel="stylesheet" href="style/Register_page_style.css">
+</head>
+
+<body>
+    <div class="centerlize_container">
+        <div class="mobilesize_contain">
+            <div class="content_container">
+                <div class="logo">
+                    <img src="Images/Mulah_logo.png" alt="">
+                </div>
+                <div class="Register_welcome">
+                    <p class="reg">Registration</p>
+                    <p class="alert">Please fill up your details. </p>
+                </div>
+                <form id="registerForm">
+                    <div class="input_container">
+                        <p class="title">Name</p>
+                        <input type="text" id="name" placeholder="Enter Name" required>
+                        <div class="reg_alert">
+                            <p>*please insert a name</p>
+                        </div>
+                    </div>
+                    <div class="input_container">
+                        <p class="title">Birthday</p>
+                        <div class="birth_d_input_con">
+                            <div class="day">
+                                <input type="text" id="day" placeholder="DD" required>
+                            </div>
+                            <div class="month">
+                                <input type="text" id="month" placeholder="MM" required>
+                            </div>
+                            <div class="year">
+                                <input type="text" id="year" placeholder="YYYY" required>
+                            </div>
+                        </div>
+                        <div class="reg_alert">
+                            <p>*please insert your birthday.</p>
+                        </div>
+                    </div>
+                    <div class="input_container">
+                        <p class="title">Email</p>
+                        <input type="email" id="email" placeholder="Email Address" required>
+                        <div class="reg_alert">
+                            <p>*please insert an email address.</p>
+                        </div>
+                    </div>
+                </form>
+                <div class="input_submit_container">
+                    <div class="mobileNum_input_container"></div>
+                    <div class="sub_button">
+                        <button onclick="submitForm()">Continue</button>
+                    </div>
+                </div>
+                <footer class="foot">
+                    <hr>
+                    <p>Powered by <a href="#">MulahReward.com</a></p>
+                </footer>
+            </div>
+        </div>   
+    </div>
+
+    <script>
+        window.onload = function() {
+            const queryString = window.location.search;
+            const urlParams = new URLSearchParams(queryString);
+            const phone = urlParams.get('phone');
+            document.getElementById("registerForm").phone = phone;
+        };
+
+        function submitForm() {
+            const name = document.getElementById('name').value;
+            const day = document.getElementById('day').value;
+            const month = document.getElementById('month').value;
+            const year = document.getElementById('year').value;
+            const email = document.getElementById('email').value;
+            const phone = new URLSearchParams(window.location.search).get('phone');
+            const birthday = `${day}/${month}/${year}`;
+            
+            const url = `display.html?phone=${encodeURIComponent(phone)}&name=${encodeURIComponent(name)}&birthday=${encodeURIComponent(birthday)}&email=${encodeURIComponent(email)}`;
+            window.location.href = url;
+        }
+    </script>
+</body>
+</html>
